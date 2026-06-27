@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #0a0a0f;
+    color: #f8fafc;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 2px; }
+
+  ::selection { background: rgba(124, 58, 237, 0.3); color: #f8fafc; }
+}
+
+@layer components {
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(124, 58, 237, 0.25);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 30px rgba(124,58,237,0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #e879f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-link {
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #9ca3af;
+    transition: color 0.2s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover { color: #f8fafc; }
+  .nav-link:hover::after { width: 100%; }
+  .nav-link.active { color: #a78bfa; }
+  .nav-link.active::after { width: 100%; }
+
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(124, 58, 237, 0.12);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    color: #a78bfa;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+  }
+
+  .tech-pill:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: rgba(167, 139, 250, 0.35);
+    color: #c4b5fd;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: #fff;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 25px rgba(124,58,237,0.45); }
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary > * { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: transparent;
+    color: #a78bfa;
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(167, 139, 250, 0.5);
+    color: #c4b5fd;
+    transform: translateY(-1px);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7c3aed;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: #7c3aed;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .transition-gpu { transform: translateZ(0); }
+}
