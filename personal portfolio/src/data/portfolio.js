@@ -11,8 +11,8 @@ export const NAV_LINKS = [
 
 export const HERO = {
   greeting: "Glad you're here!! I'm",
-  name: "Niranjana",
-  roles: ["Frontend Developer"],
+  name: "R Niranjana",
+  roles: ["Software Developer"],
   tagline: "Design. Develop. Deliver seamless user experiences.",
   cta: { label: "Download Resume", href: "/resume.pdf" },
   ctaSecondary: { label: "Let's Talk", href: "#contact" },
